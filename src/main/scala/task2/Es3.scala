@@ -4,7 +4,7 @@ object Es3 extends App:
 
     // A
     val intToStringVal: Int => String = 
-        (i: Int) => i match
+        i => i match
             case i if i >= 0 => "positive"
             case _ => "negative"
     
@@ -37,7 +37,7 @@ object Es3 extends App:
     println()
 
     def negDef(predicate: String => Boolean): String => Boolean = 
-        (string: String) => !predicate(string)
+        !predicate(_)
     
     val notEmptyDef = negDef(empty)
     println("should be true: " + notEmptyDef("foo"))
@@ -48,7 +48,7 @@ object Es3 extends App:
 
     // C
     def neg[T](predicate: T => Boolean): T => Boolean = 
-        (input: T) => !predicate(input)
+        !predicate(_)
         
     val notEmpty = neg(empty)
     println("should be true: " + notEmpty("foo"))

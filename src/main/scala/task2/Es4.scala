@@ -1,13 +1,15 @@
 package task2
 
 object Es4 extends App:
-    def testFormula(x: Int, y: Int, z: Int, actual: Boolean) = actual match
-        case actual if actual == (x<=y && y==z) =>
-            println(s"X=$x  Y=$y  Z=$z  was correctly $actual")
-        case _ => 
-            println(s"X=$x  Y=$y  Z=$z  should be ${(x<=y && y==z)}, but was $actual")
+    def testFormula(x: Int, y: Int, z: Int, actual: Boolean) =
+        actual match
+            case actual if actual == (x<=y && y==z) =>
+                println(s"X=$x  Y=$y  Z=$z  was correctly $actual")
+            case _ => 
+                println(s"X=$x  Y=$y  Z=$z  should be ${(x<=y && y==z)}, but was $actual")
 
-    val nonCurriedVal: (Int, Int, Int) => Boolean = (x, y, z) => x <= y && y == z
+    val nonCurriedVal = 
+        (x: Int, y: Int, z: Int) => x <= y && y == z
     
     testFormula(1, 2, 3, nonCurriedVal(1, 2, 3))
     testFormula(1, 2, 2, nonCurriedVal(1, 2, 2))
