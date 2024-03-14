@@ -3,9 +3,10 @@ package task2
 object Es3 extends App:
 
     // A
-    val intToStringVal = (i: Int) => i match
-        case i if i >= 0 => "positive"
-        case _ => "negative"
+    val intToStringVal: Int => String = 
+        (i: Int) => i match
+            case i if i >= 0 => "positive"
+            case _ => "negative"
     
     println("should be positive: " + intToStringVal(2))
     println("should be positive (zero): " + intToStringVal(0))
@@ -23,8 +24,9 @@ object Es3 extends App:
 
 
     // B
-    val negVal = (predicate: String => Boolean) => 
-        (string: String) => !predicate(string)
+    val negVal: (String => Boolean) => String => Boolean =
+        (predicate: String => Boolean) => 
+            (string: String) => !predicate(string)
     
 
     val empty: String => Boolean = _ == ""
@@ -34,7 +36,7 @@ object Es3 extends App:
     println("should be true: " + (notEmptyVal("foo") && !notEmptyVal("")))
     println()
 
-    def negDef(predicate: String => Boolean): (String => Boolean) = 
+    def negDef(predicate: String => Boolean): String => Boolean = 
         (string: String) => !predicate(string)
     
     val notEmptyDef = negDef(empty)
