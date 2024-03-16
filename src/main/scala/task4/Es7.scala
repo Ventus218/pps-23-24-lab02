@@ -1,8 +1,5 @@
 package task4
 
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.*
-
 object Es7 extends App:
 
     enum Shape:
